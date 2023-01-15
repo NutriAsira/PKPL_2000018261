@@ -3,12 +3,12 @@ from ai_pkg.utils import random, argmax_random_tie
 
 
 city_map = Graph(dict(
-    Fagaras=dict(Fagaras=0, Bucharest=211, Pitesti=82, Craiova=169, Rimnicu=81, Sibiu=99),
-    Bucharest=dict(Fagaras=211, Bucharest=0, Pitesti=101, Craiova=152, Rimnicu=186, Sibiu=232),
-    Pitesti=dict(Fagaras=82, Bucharest=101, Pitesti=0, Craiova=138, Rimnicu=97, Sibiu=143),
-    Craiova=dict(Fagaras=169, Bucharest=152, Pitesti=138, Craiova=0, Rimnicu=146, Sibiu=175),
-    Rimnicu=dict(Fagaras=81, Bucharest=186, Pitesti=97, Craiova=146, Rimnicu=0, Sibiu=80),
-    Sibiu=dict(Fagaras=99, Bucharest=232, Pitesti=143, Craiova=175, Rimnicu=80, Sibiu=0)),
+    Kraton=dict(Kraton=0, Bantul=211, Sewon=82, KotaGede=169, Umbulharjo=81, Pakualaman=99),
+    Bantul=dict(Kraton=211, Bantul=0, Sewon=101, KotaGede=152, Umbulharjo=186, Pakualaman=232),
+    Sewon=dict(Kraton=82, Bantul=101, Sewon=0, KotaGede=138, Umbulharjo=97, Pakualaman=143),
+    KotaGede=dict(Kraton=169, Bantul=152, Sewon=138, KotaGede=0, Umbulharjo=146, Pakualaman=175),
+    Umbulharjo=dict(Kraton=81, Bantul=186, Sewon=97, KotaGede=146, Umbulharjo=0, Pakualaman=80),
+    Pakualaman=dict(Kraton=99, Bantul=232, Sewon=143, KotaGede=175, Umbulharjo=80, Pakualaman=0)),
     directed=False)
 
 distances = {}
@@ -46,7 +46,7 @@ def hill_climbing(problem):
         neighbors = []
         for i in range(number_of_neighbors):
             new_state = problem.generate_neighbour(state)
-            if new_state[0] == 'Fagaras' and new_state[-1] == 'Sibiu':
+            if new_state[0] == 'Kraton' and new_state[-1] == 'Pakualaman':
                 neighbors.append(Node(new_state))
                 state = new_state
         return neighbors
